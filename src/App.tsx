@@ -4,6 +4,7 @@ import { HomePage } from './pages/HomePage';
 import { ChartViewPage } from './pages/ChartViewPage';
 import { DatasetOverviewPage } from './pages/DatasetOverviewPage';
 import { SavedPage } from './pages/SavedPage';
+import { SettingsPage } from './pages/SettingsPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="chart" element={<ChartViewPage />} />
           <Route path="datasets" element={<DatasetOverviewPage />} />
           <Route path="saved" element={<SavedPage />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </HashRouter>

@@ -6,11 +6,13 @@ import { BaseAdapter } from './BaseAdapter';
 import { WorldBankAdapter } from './WorldBankAdapter';
 import { EurostatAdapter } from './EurostatAdapter';
 import { OWIDAdapter } from './OWIDAdapter';
+import { WikidataAdapter } from './WikidataAdapter';
 
 export { BaseAdapter } from './BaseAdapter';
 export { WorldBankAdapter } from './WorldBankAdapter';
 export { EurostatAdapter } from './EurostatAdapter';
 export { OWIDAdapter } from './OWIDAdapter';
+export { WikidataAdapter } from './WikidataAdapter';
 
 // Lazy-initialized adapter instances
 let adapters: Record<string, BaseAdapter> | null = null;
@@ -24,6 +26,7 @@ function getAdapters(): Record<string, BaseAdapter> {
       worldbank: new WorldBankAdapter(),
       eurostat: new EurostatAdapter(),
       owid: new OWIDAdapter(),
+      wikidata: new WikidataAdapter(),
     };
   }
   return adapters;

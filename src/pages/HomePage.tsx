@@ -13,6 +13,7 @@ const SOURCES = [
   { id: 'worldbank', label: 'World Bank' },
   { id: 'owid', label: 'Our World in Data' },
   { id: 'eurostat', label: 'Eurostat' },
+  { id: 'wikidata', label: 'Wikidata' },
 ];
 
 const CHART_TYPES: { id: ChartType; label: string }[] = [

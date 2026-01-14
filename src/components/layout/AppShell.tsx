@@ -2,7 +2,7 @@
  * App shell layout with mobile-first navigation
  */
 
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, NavLink, Link } from 'react-router-dom';
 import styles from './Layout.module.css';
 
 export function AppShell() {
@@ -10,6 +10,9 @@ export function AppShell() {
     <div className={styles.appShell}>
       <header className={styles.header}>
         <h1 className={styles.title}>Quick Data Viz</h1>
+        <Link to="/settings" className={styles.headerButton} aria-label="Settings">
+          <span className={styles.settingsIcon}>&#x2699;</span>
+        </Link>
       </header>
 
       <main className={styles.main}>

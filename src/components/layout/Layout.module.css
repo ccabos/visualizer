@@ -16,12 +16,36 @@
   color: white;
   padding: 12px 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
   font-size: 18px;
   font-weight: 600;
   margin: 0;
+}
+
+.headerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.headerButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.settingsIcon {
+  font-size: 20px;
 }
 
 .main {

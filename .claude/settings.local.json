@@ -14,7 +14,13 @@
       "Bash(npm run typecheck:*)",
       "Bash(npm run build)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Quick Data Viz tool\n\nMobile-first data visualization tool for public datasets.\n\nFeatures:\n- D3.js charts \\(Line, Bar, Scatter\\)\n- Data sources: World Bank, Eurostat, Our World in Data\n- URL state for shareable charts\n- CSV/PNG export\n- PWA support\n- Curated indicator catalog\n\nTech stack: React, TypeScript, Vite, Zustand, D3.js\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:www.wikidata.org)",
+      "WebFetch(domain:www.mediawiki.org)"
     ]
   }
 }

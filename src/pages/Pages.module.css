@@ -431,3 +431,205 @@
   background: #fee;
   color: #e53935;
 }
+
+/* Settings page styles */
+.warningBox {
+  padding: 12px 16px;
+  background: #fff9e6;
+  border: 1px solid #ffc107;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #856404;
+}
+
+.warningBox strong {
+  color: #664d03;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.toggleLabel {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.toggle {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background: #ccc;
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggleOn {
+  background: var(--color-primary);
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggleOn .toggleKnob {
+  transform: translateX(22px);
+}
+
+.helperText {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin: 4px 0 8px 0;
+  line-height: 1.4;
+}
+
+.helperText a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.helperText a:hover {
+  text-decoration: underline;
+}
+
+.apiKeyRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.apiKeyRow .input {
+  flex: 1;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.savedKeyInfo {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 8px;
+  font-family: monospace;
+}
+
+.providerList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.providerItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.providerItem:hover:not(.providerItemDisabled) {
+  border-color: var(--color-primary);
+}
+
+.providerItemActive {
+  background: rgba(59, 130, 246, 0.05);
+  border-color: var(--color-primary);
+}
+
+.providerItemDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.providerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.providerLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.checkmark {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.providerDescription {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.providerMissing {
+  font-size: 11px;
+  color: #e53935;
+  margin-top: 4px;
+}
+
+.savedNotification {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.dangerButton {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background: white;
+  color: #e53935;
+  border: 1px solid #e53935;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dangerButton:hover {
+  background: #e53935;
+  color: white;
+}

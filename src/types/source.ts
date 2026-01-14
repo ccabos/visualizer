@@ -48,7 +48,8 @@ export type ParsingType =
   | 'eurostat-jsonstat'
   | 'csv-owid'
   | 'ember-csv'
-  | 'overpass-json';
+  | 'overpass-json'
+  | 'sparql-json';
 
 export interface AttributionConfig {
   text: string;
