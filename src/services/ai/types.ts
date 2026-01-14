@@ -5,7 +5,7 @@
 /**
  * Message roles in a conversation
  */
-export type MessageRole = 'user' | 'assistant' | 'system';
+export type MessageRole = 'user' | 'assistant' | 'system' | 'tool';
 
 /**
  * A message in the conversation
@@ -14,6 +14,7 @@ export interface Message {
   role: MessageRole;
   content: string;
   toolCalls?: ToolCall[];
+  toolCallId?: string; // For tool role messages - the ID of the tool call this is responding to
 }
 
 /**

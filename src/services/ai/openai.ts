@@ -169,8 +169,18 @@ export class OpenAIService implements AIService {
     }
 
     for (const msg of messages) {
+      // Handle tool role messages (tool results in conversation history)
+      if (msg.role === 'tool') {
+        result.push({
+          role: 'tool',
+          content: msg.content,
+          tool_call_id: msg.toolCallId,
+        });
+        continue;
+      }
+
       const openAIMsg: OpenAIMessage = {
-        role: msg.role,
+        role: msg.role as 'user' | 'assistant' | 'system',
         content: msg.content,
       };
 

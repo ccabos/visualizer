@@ -189,12 +189,21 @@ export function useChat(options?: UseChatOptions): UseChatReturn {
             toolCalls: currentResponse.toolCalls,
           });
 
+          // Add tool results as 'tool' role messages (required for multi-round tool calls)
+          for (const tr of toolResults) {
+            conversationMessages.push({
+              role: 'tool',
+              content: typeof tr.result === 'string' ? tr.result : JSON.stringify(tr.result),
+              toolCallId: tr.toolCallId,
+            });
+          }
+
           // Create a new streaming response
           let continueContent = '';
           currentResponse = await aiService.stream({
             messages: conversationMessages,
             tools: explorationTools,
-            toolResults,
+            // toolResults no longer needed - they're in conversationMessages
             systemPrompt: EXPLORER_SYSTEM_PROMPT,
             onChunk: (chunk) => {
               if (chunk.type === 'text' && chunk.content) {

@@ -125,11 +125,37 @@ export class ClaudeService implements AIService {
   ): AnthropicMessage[] {
     const result: AnthropicMessage[] = [];
 
+    // Collect consecutive tool results to batch them
+    let pendingToolResults: AnthropicContent[] = [];
+
+    const flushToolResults = () => {
+      if (pendingToolResults.length > 0) {
+        result.push({
+          role: 'user',
+          content: pendingToolResults,
+        });
+        pendingToolResults = [];
+      }
+    };
+
     for (const msg of messages) {
       if (msg.role === 'system') {
         // System messages are handled separately in Anthropic API
         continue;
       }
+
+      // Handle tool role messages (tool results in conversation history)
+      if (msg.role === 'tool') {
+        pendingToolResults.push({
+          type: 'tool_result',
+          tool_use_id: msg.toolCallId || '',
+          content: msg.content,
+        });
+        continue;
+      }
+
+      // Flush any pending tool results before non-tool messages
+      flushToolResults();
 
       // If assistant message has tool calls, include them as tool_use blocks
       if (msg.role === 'assistant' && msg.toolCalls && msg.toolCalls.length > 0) {
@@ -161,6 +187,9 @@ export class ClaudeService implements AIService {
         });
       }
     }
+
+    // Flush any remaining tool results
+    flushToolResults();
 
     // Add tool results if present
     if (toolResults && toolResults.length > 0) {
