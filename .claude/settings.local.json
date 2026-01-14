@@ -20,7 +20,8 @@
       "Bash(git remote add:*)",
       "Bash(git push:*)",
       "WebFetch(domain:www.wikidata.org)",
-      "WebFetch(domain:www.mediawiki.org)"
+      "WebFetch(domain:www.mediawiki.org)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd Settings page and Wikidata integration\n\n- Add settings store with API key management \\(Anthropic/OpenAI\\)\n- Create Settings page with API key inputs and preferences\n- Add settings icon to header navigation\n- Implement WikidataAdapter with SPARQL query support\n- Add curated Wikidata indicators \\(population, GDP, HDI, etc.\\)\n- Register Wikidata as data source option\n- Add unit tests for settings store and Wikidata adapter\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
