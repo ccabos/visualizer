@@ -397,11 +397,12 @@ export class OpenAIService implements AIService {
                 const existing = toolCallsMap.get(tc.index);
 
                 if (!existing) {
-                  // New tool call
-                  const newToolCall: ToolCall = {
+                  // New tool call - store arguments as string buffer
+                  const newToolCall: ToolCall & { _argsBuffer: string } = {
                     id: tc.id || '',
                     name: tc.function?.name || '',
                     arguments: {},
+                    _argsBuffer: tc.function?.arguments || '',
                   };
                   toolCallsMap.set(tc.index, newToolCall);
                   onChunk({
@@ -409,18 +410,9 @@ export class OpenAIService implements AIService {
                     toolCall: newToolCall,
                   });
                 } else {
-                  // Append to existing tool call
+                  // Append to existing tool call's argument buffer
                   if (tc.function?.arguments) {
-                    const currentArgs = JSON.stringify(existing.arguments);
-                    const argsStr = currentArgs === '{}' ? '' : currentArgs.slice(0, -1);
-                    try {
-                      existing.arguments = JSON.parse(argsStr + tc.function.arguments);
-                    } catch {
-                      // Still building JSON, store as string temporarily
-                      (existing as unknown as { _argsBuffer: string })._argsBuffer =
-                        ((existing as unknown as { _argsBuffer?: string })._argsBuffer || '') +
-                        tc.function.arguments;
-                    }
+                    (existing as ToolCall & { _argsBuffer: string })._argsBuffer += tc.function.arguments;
                     onChunk({
                       type: 'tool_call_delta',
                       content: tc.function.arguments,
