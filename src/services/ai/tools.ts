@@ -236,6 +236,9 @@ export class ToolExecutor {
     query: string,
     source?: string
   ): Promise<unknown> {
+    if (!query || typeof query !== 'string') {
+      throw new Error('Search query is required');
+    }
     const results = searchCatalog(query, { sourceId: source });
 
     return results.slice(0, 10).map((ind) => ({
@@ -256,6 +259,9 @@ export class ToolExecutor {
     query: string,
     _type?: string
   ): Promise<unknown> {
+    if (!query || typeof query !== 'string') {
+      throw new Error('Search query is required');
+    }
     // Use Wikidata API for entity search
     const url = `https://www.wikidata.org/w/api.php?action=wbsearchentities&search=${encodeURIComponent(query)}&language=en&format=json&origin=*&limit=10`;
 
@@ -286,6 +292,9 @@ export class ToolExecutor {
     entityType: string,
     limit: number = 20
   ): Promise<unknown> {
+    if (!entityType || typeof entityType !== 'string') {
+      throw new Error('Entity type is required');
+    }
     const entityTypeMap: Record<string, string> = {
       country: 'Q6256',
       city: 'Q515',
@@ -319,6 +328,9 @@ export class ToolExecutor {
    * Execute custom SPARQL query
    */
   private async executeSparql(query: string): Promise<unknown> {
+    if (!query || typeof query !== 'string') {
+      throw new Error('SPARQL query is required');
+    }
     const results = await this.wikidataAdapter.executeCustomSparql(query);
 
     // Simplify the results for the AI
@@ -384,9 +396,10 @@ export class ToolExecutor {
       indicators = indicators.filter((ind) => ind.sourceId === source);
     }
 
-    if (topic) {
+    if (topic && typeof topic === 'string') {
+      const topicLower = topic.toLowerCase();
       indicators = indicators.filter((ind) =>
-        ind.topics.some((t) => t.toLowerCase().includes(topic.toLowerCase()))
+        ind.topics.some((t) => t && t.toLowerCase().includes(topicLower))
       );
     }
 
