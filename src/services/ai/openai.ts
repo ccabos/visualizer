@@ -169,10 +169,24 @@ export class OpenAIService implements AIService {
     }
 
     for (const msg of messages) {
-      result.push({
+      const openAIMsg: OpenAIMessage = {
         role: msg.role,
         content: msg.content,
-      });
+      };
+
+      // Include tool_calls if present (required for OpenAI when tool results follow)
+      if (msg.toolCalls && msg.toolCalls.length > 0) {
+        openAIMsg.tool_calls = msg.toolCalls.map((tc) => ({
+          id: tc.id,
+          type: 'function' as const,
+          function: {
+            name: tc.name,
+            arguments: JSON.stringify(tc.arguments),
+          },
+        }));
+      }
+
+      result.push(openAIMsg);
     }
 
     // Add tool results if present

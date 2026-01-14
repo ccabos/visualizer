@@ -182,9 +182,11 @@ export function useChat(options?: UseChatOptions): UseChatReturn {
           );
 
           // Continue the conversation with tool results
+          // Include tool_calls in the assistant message (required by OpenAI)
           conversationMessages.push({
             role: 'assistant',
             content: currentResponse.content || '',
+            toolCalls: currentResponse.toolCalls,
           });
 
           // Create a new streaming response

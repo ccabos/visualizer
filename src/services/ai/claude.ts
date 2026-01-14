@@ -131,10 +131,35 @@ export class ClaudeService implements AIService {
         continue;
       }
 
-      result.push({
-        role: msg.role as 'user' | 'assistant',
-        content: msg.content,
-      });
+      // If assistant message has tool calls, include them as tool_use blocks
+      if (msg.role === 'assistant' && msg.toolCalls && msg.toolCalls.length > 0) {
+        const content: AnthropicContent[] = [];
+
+        // Add text content if present
+        if (msg.content) {
+          content.push({ type: 'text', text: msg.content });
+        }
+
+        // Add tool_use blocks
+        for (const tc of msg.toolCalls) {
+          content.push({
+            type: 'tool_use',
+            id: tc.id,
+            name: tc.name,
+            input: tc.arguments,
+          });
+        }
+
+        result.push({
+          role: 'assistant',
+          content,
+        });
+      } else {
+        result.push({
+          role: msg.role as 'user' | 'assistant',
+          content: msg.content,
+        });
+      }
     }
 
     // Add tool results if present
