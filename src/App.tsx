@@ -5,6 +5,7 @@ import { ChartViewPage } from './pages/ChartViewPage';
 import { DatasetOverviewPage } from './pages/DatasetOverviewPage';
 import { SavedPage } from './pages/SavedPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { AIExplorerPage } from './pages/AIExplorerPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="datasets" element={<DatasetOverviewPage />} />
           <Route path="saved" element={<SavedPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="explore" element={<AIExplorerPage />} />
         </Route>
       </Routes>
     </HashRouter>

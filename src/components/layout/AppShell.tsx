@@ -30,6 +30,15 @@ export function AppShell() {
           <span className={styles.navLabel}>Build</span>
         </NavLink>
         <NavLink
+          to="/explore"
+          className={({ isActive }) =>
+            `${styles.navItem} ${isActive ? styles.navItemActive : ''}`
+          }
+        >
+          <span className={styles.navIcon}>&#x1F4AC;</span>
+          <span className={styles.navLabel}>AI</span>
+        </NavLink>
+        <NavLink
           to="/chart"
           className={({ isActive }) =>
             `${styles.navItem} ${isActive ? styles.navItemActive : ''}`
