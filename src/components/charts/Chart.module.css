@@ -1,0 +1,121 @@
+/* Chart component styles */
+
+.chartWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chartContainer {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.gridLines line {
+  stroke: #e0e0e0;
+  stroke-dasharray: 2, 2;
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 100;
+  max-width: 250px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transform: translateY(-100%);
+}
+
+.tooltipTitle {
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tooltipRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.tooltipLabel {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tooltipValue {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.legendVertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legendLabel {
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .chartContainer {
+    min-height: 250px;
+  }
+
+  .tooltip {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .legend {
+    gap: 8px 14px;
+    font-size: 12px;
+  }
+
+  .legendLabel {
+    max-width: 100px;
+  }
+}

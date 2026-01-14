@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.worldbank.org)",
+      "WebFetch(domain:ec.europa.eu)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ember-energy.org)",
+      "WebSearch",
+      "WebFetch(domain:allotmentandy.github.io)",
+      "WebFetch(domain:dev.to)",
+      "Bash(npm install)",
+      "Bash(npm run test:ci:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(npm run build)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
